@@ -1,0 +1,53 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = false
+
+# dir git | model context(tokens) cost
+format = """
+$directory \
+$git_branch\
+$git_status  \
+[⚡](bold yellow)\
+${env_var.CLAUDE_MODEL} \
+${env_var.CLAUDE_CONTEXT_NORMAL}\
+${env_var.CLAUDE_CONTEXT_WARNING}\
+${env_var.CLAUDE_CONTEXT_DANGER}\
+${env_var.CLAUDE_TOKENS}\
+"""
+
+[fill]
+symbol = ""
+
+[directory]
+truncation_length = 2
+truncate_to_repo = true
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+
+[git_status]
+format = "[$all_status]($style)"
+
+[env_var.CLAUDE_MODEL]
+variable = "CLAUDE_MODEL"
+format = "[$env_value](bold #CC785C)"
+
+# Context % — only one of these will be set at a time
+# 0-39%: green, 40-59%: yellow, 60%+: red
+[env_var.CLAUDE_CONTEXT_NORMAL]
+variable = "CLAUDE_CONTEXT_NORMAL"
+format = "[$env_value](bold green)"
+
+[env_var.CLAUDE_CONTEXT_WARNING]
+variable = "CLAUDE_CONTEXT_WARNING"
+format = "[$env_value](bold yellow)"
+
+[env_var.CLAUDE_CONTEXT_DANGER]
+variable = "CLAUDE_CONTEXT_DANGER"
+format = "[$env_value](bold red)"
+
+# Token usage: used/available
+[env_var.CLAUDE_TOKENS]
+variable = "CLAUDE_TOKENS"
+format = "[ • $env_value](dimmed white)"
+

@@ -1,28 +1,32 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 export TERM="xterm-256color"
-
-#path to nvm
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
-# setup python3 as default
-alias python=/usr/local/bin/python3
-# setup pip3 as pip
-alias pip=/usr/local/bin/pip3
 
 # Homebrew 
 export PATH=/opt/homebrew/bin:$PATH
 
+# Load Homebrew environment so python3 always points to the latest version
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+# Make python and pip default to python3 and pip3
+alias python=python3
+alias pip=pip3
+
+#path to nvm
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# setup lazygit as lg
+alias lg=lazygit
+
+
 #; Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-
-
+export ZSH_CUSTOM="$ZSH/custom"
+export ZSH_COMPLETIONS="$ZSH/completions"
 
 # Run spectrum_ls to see a list of colors zsh can easily produce and
 # which can be used in a theme
@@ -32,7 +36,6 @@ export ZSH=~/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="powerlevel10k/powerlevel10k"
 DEFAULT_USER=`whoami`
 
 # Uncomment the following line to enable command auto-correction.
@@ -52,9 +55,6 @@ plugins=(
 	extract
 	zsh-autosuggestions
 )
-
-# github CLI
-compctl -K _gh gh
 
 # User configuration
 
@@ -94,5 +94,13 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 #################################################
 export REVIEW_BASE=master
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
+# Starship
+export STARSHIP_CONFIG="$HOME/.dotfiles/starship.toml"
+eval "$(starship init zsh)"
+# pnpm
+export PNPM_HOME="/Users/janvitu/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
