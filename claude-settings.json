@@ -1,0 +1,63 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Fetch",
+      "Read",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(du:*)",
+      "Bash(file:*)",
+      "Bash(stat:*)"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.dotfiles/starship-claude",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "pm-toolkit@pm-skills": true,
+    "pm-product-strategy@pm-skills": true,
+    "pm-product-discovery@pm-skills": true,
+    "pm-market-research@pm-skills": true,
+    "pm-data-analytics@pm-skills": true,
+    "pm-marketing-growth@pm-skills": true,
+    "pm-go-to-market@pm-skills": true,
+    "pm-execution@pm-skills": true,
+    "claude-md-management@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "document-skills@anthropic-agent-skills": true
+  },
+  "extraKnownMarketplaces": {
+    "pm-skills": {
+      "source": {
+        "source": "github",
+        "repo": "phuryn/pm-skills"
+      }
+    },
+    "anthropic-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      }
+    },
+    "starship-claude": {
+      "source": {
+        "source": "github",
+        "repo": "martinemde/starship-claude"
+      }
+    },
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      }
+    }
+  }
+}

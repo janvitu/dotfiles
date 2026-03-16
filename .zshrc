@@ -6,6 +6,9 @@ export PATH=/opt/homebrew/bin:$PATH
 # Load Homebrew environment so python3 always points to the latest version
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Added by Obsidian
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+
 export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
