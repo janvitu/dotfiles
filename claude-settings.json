@@ -13,7 +13,8 @@
       "Bash(wc:*)",
       "Bash(du:*)",
       "Bash(file:*)",
-      "Bash(stat:*)"
+      "Bash(stat:*)",
+      "mcp__pencil"
     ]
   },
   "statusLine": {
@@ -22,24 +23,25 @@
     "padding": 0
   },
   "enabledPlugins": {
-    "pm-toolkit@pm-skills": true,
-    "pm-product-strategy@pm-skills": true,
-    "pm-product-discovery@pm-skills": true,
-    "pm-market-research@pm-skills": true,
-    "pm-data-analytics@pm-skills": true,
-    "pm-marketing-growth@pm-skills": true,
-    "pm-go-to-market@pm-skills": true,
-    "pm-execution@pm-skills": true,
     "claude-md-management@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
-    "document-skills@anthropic-agent-skills": true
+    "document-skills@anthropic-agent-skills": true,
+    "pm-data-analytics@pm-skills": true,
+    "pm-execution@pm-skills": true,
+    "pm-go-to-market@pm-skills": true,
+    "pm-market-research@pm-skills": true,
+    "pm-marketing-growth@pm-skills": true,
+    "pm-product-discovery@pm-skills": true,
+    "pm-product-strategy@pm-skills": true,
+    "pm-toolkit@pm-skills": true
   },
   "extraKnownMarketplaces": {
     "pm-skills": {
       "source": {
         "source": "github",
         "repo": "phuryn/pm-skills"
-      }
+      },
+      "autoUpdate": true
     },
     "anthropic-agent-skills": {
       "source": {
@@ -47,17 +49,12 @@
         "repo": "anthropics/skills"
       }
     },
-    "starship-claude": {
-      "source": {
-        "source": "github",
-        "repo": "martinemde/starship-claude"
-      }
-    },
     "impeccable": {
       "source": {
         "source": "github",
         "repo": "pbakaus/impeccable"
-      }
+      },
+      "autoUpdate": true
     }
   }
 }
