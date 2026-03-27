@@ -17,52 +17,6 @@
       "mcp__pencil"
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "~/.dotfiles/starship-claude",
-    "padding": 0
-  },
-  "enabledPlugins": {
-    "claude-md-management@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
-    "document-skills@anthropic-agent-skills": true,
-    "pm-data-analytics@pm-skills": true,
-    "pm-execution@pm-skills": true,
-    "pm-go-to-market@pm-skills": true,
-    "pm-market-research@pm-skills": true,
-    "pm-marketing-growth@pm-skills": true,
-    "pm-product-discovery@pm-skills": true,
-    "pm-product-strategy@pm-skills": true,
-    "pm-toolkit@pm-skills": true
-  },
-  "extraKnownMarketplaces": {
-    "pm-skills": {
-      "source": {
-        "source": "github",
-        "repo": "phuryn/pm-skills"
-      },
-      "autoUpdate": true
-    },
-    "anthropic-agent-skills": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/skills"
-      }
-    },
-    "impeccable": {
-      "source": {
-        "source": "github",
-        "repo": "pbakaus/impeccable"
-      },
-      "autoUpdate": true
-    },
-    "superpowers-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "obra/superpowers-marketplace"
-      }
-    }
-  },
   "hooks": {
     "SessionStart": [
       {
@@ -98,5 +52,52 @@
         ]
       }
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.dotfiles/starship-claude",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "claude-md-management@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "document-skills@anthropic-agent-skills": true,
+    "pm-data-analytics@pm-skills": true,
+    "pm-execution@pm-skills": true,
+    "pm-go-to-market@pm-skills": true,
+    "pm-market-research@pm-skills": true,
+    "pm-marketing-growth@pm-skills": true,
+    "pm-product-discovery@pm-skills": true,
+    "pm-product-strategy@pm-skills": true,
+    "pm-toolkit@pm-skills": true,
+    "context7@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "pm-skills": {
+      "source": {
+        "source": "github",
+        "repo": "phuryn/pm-skills"
+      },
+      "autoUpdate": true
+    },
+    "anthropic-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      }
+    },
+    "impeccable": {
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      },
+      "autoUpdate": true
+    },
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    }
   }
 }
