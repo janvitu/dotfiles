@@ -275,6 +275,37 @@ if command -v jq >/dev/null 2>&1 && [ -n "$payload" ]; then
   fi
 
   #
+  # Current task: Claude Code in-progress task OR first pending GSD todo
+  #
+  unset CLAUDE_TASK_CC
+  unset CLAUDE_TASK_GSD
+
+  # Priority 1: Claude Code in-session task (same file location as gsd-statusline.js)
+  if [ -n "${CLAUDE_SESSION_ID:-}" ]; then
+    claude_dir="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
+    todos_dir="$claude_dir/todos"
+    if [ -d "$todos_dir" ]; then
+      todo_file="$(ls -t "$todos_dir/${CLAUDE_SESSION_ID}-agent-"*.json 2>/dev/null | head -1 || true)"
+      if [ -n "$todo_file" ] && [ -f "$todo_file" ]; then
+        current_task="$(jq -r '[.[] | select(.status == "in_progress")] | first | .activeForm // empty' "$todo_file" 2>/dev/null || true)"
+        if [ -n "$current_task" ]; then
+          export CLAUDE_TASK_CC="$current_task"
+        fi
+      fi
+    fi
+  fi
+
+  # Priority 2: First pending GSD todo (oldest file = top of queue)
+  if [ -z "${CLAUDE_TASK_CC:-}" ] && [ -n "${dir:-}" ] && [ -d "$dir/.planning/todos/pending" ]; then
+    gsd_task="$(ls -t "$dir/.planning/todos/pending/"*.md 2>/dev/null | tail -1 | \
+      xargs -I{} grep -m1 "^title:" {} 2>/dev/null | \
+      sed 's/^title:[[:space:]]*//' | tr -d "\"'" 2>/dev/null || true)"
+    if [ -n "$gsd_task" ]; then
+      export CLAUDE_TASK_GSD="$gsd_task"
+    fi
+  fi
+
+  #
   # Context window usage percentage
   #
   context_size="${values[17]:-}"

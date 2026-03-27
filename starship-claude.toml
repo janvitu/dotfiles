@@ -13,6 +13,8 @@ ${env_var.CLAUDE_CONTEXT_NORMAL}\
 ${env_var.CLAUDE_CONTEXT_WARNING}\
 ${env_var.CLAUDE_CONTEXT_DANGER}\
 ${env_var.CLAUDE_TOKENS}\
+${env_var.CLAUDE_TASK_CC}\
+${env_var.CLAUDE_TASK_GSD}\
 """
 
 [fill]
@@ -50,4 +52,14 @@ format = "[$env_value](bold red)"
 [env_var.CLAUDE_TOKENS]
 variable = "CLAUDE_TOKENS"
 format = "[ • $env_value](dimmed white)"
+
+# Claude Code in-session task — orange to match Claude's brand color
+[env_var.CLAUDE_TASK_CC]
+variable = "CLAUDE_TASK_CC"
+format = "\n[✦ $env_value](#CC785C italic)"
+
+# GSD pending todo — cyan to distinguish from Claude task
+[env_var.CLAUDE_TASK_GSD]
+variable = "CLAUDE_TASK_GSD"
+format = "\n[◈ $env_value](cyan italic)"
 
